@@ -1,76 +1,227 @@
 # PromptLab
 
-AI-powered prompt engineering learning and evaluation platform for FYP-1 2026.
+**AI-powered prompt engineering learning and evaluation platform developed as a Final Year Project (FYP-1), 2026.**
 
-PromptLab helps users practice prompt writing, evaluate prompt quality, improve weak prompts, and track learning progress. The project includes authentication, learning chapters, practice sessions, prompt evaluation, prompt enhancement, chat history, and progress dashboards.
+PromptLab is a web application designed to help users learn and practice prompt engineering. It provides structured learning content, prompt-writing practice, AI-based evaluation and feedback, prompt enhancement, chat functionality, and progress tracking.
 
-The README follows the module order used by the project team: Areeba, Fatima, Laiba, Rabia.
+> **Project Type:** University Final Year Project — Team of 4
+> **My Role:** FYP Lead — Backend, Authentication, Database Integration & User Dashboard
 
-## Team
+This repository is my personal GitHub copy of the team's PromptLab project. The project was developed collaboratively, and the team contributions are documented below.
 
-| Member | Responsibility |
-| --- | --- |
-| Areeba | User management, authentication, dashboard, reminders |
-| Fatima | Learning mode, practice sessions, evaluation, final test, certificates |
-| Laiba | Prompt evaluation, chat, analytics, multi-agent review |
-| Rabia | Prompt enhancer, quick answers, enhancement history |
+---
+
+## Screenshots
+
+### Landing Page
+
+![PromptLab Landing Page](screenshots/01_landing_page_light.png)
+
+### User Dashboard
+
+![PromptLab Dashboard](screenshots/12_dashboard_initial.png)
+
+### Live Prompt Evaluation
+
+![PromptLab Live Evaluation](screenshots/19_live_evaluation_screen.png)
+
+### Prompt Enhancement
+
+![PromptLab Prompt Enhancement](screenshots/21_prompt_enhancement_enhanced_result.png)
+
+---
+
+## My Contribution
+
+As the **FYP Lead**, I worked primarily on the application's user management, authentication, backend integration, database functionality, and dashboard experience.
+
+### Backend & Authentication
+
+* Developed the authentication and user-management backend
+* Implemented user registration and login
+* Implemented email/OTP verification
+* Implemented password reset functionality
+* Implemented session-based authentication and logout
+* Added authentication-related API endpoints
+* Integrated SQLite for local application data
+
+### Dashboard & User Data
+
+* Developed the user dashboard
+* Implemented user statistics and progress tracking
+* Implemented streak tracking
+* Implemented prompt history and activity tracking
+* Developed APIs for dashboard, history, and user activity data
+
+### Frontend & Integration
+
+* Worked on the landing page and dashboard interface
+* Connected frontend screens with backend APIs
+* Integrated authentication flows with the frontend
+* Tested and integrated the different project modules
+
+---
+
+## Team Contributions
+
+PromptLab was developed collaboratively by four team members.
+
+| Member            | Main Responsibility                                                        |
+| ----------------- | -------------------------------------------------------------------------- |
+| **Areeba Sarwar** | User management, authentication, dashboard, backend & database integration |
+| **Fatima**        | Learning module, practice sessions, evaluation, final test & certificates  |
+| **Laiba**         | Prompt evaluation, chat, analytics & multi-agent review                    |
+| **Rabia**         | Prompt enhancer, quick answers & enhancement history                       |
+
+---
 
 ## Features
 
-- User registration, login, logout, password reset, and session-based authentication
-- Dashboard with user progress, streaks, and activity data
-- Structured learning chapters and prompt-writing practice questions
-- AI practice feedback with scores, strengths, weaknesses, and suggestions
-- Final test and certificate flow for learning completion
-- Prompt evaluation across clarity, context, specificity, constraints, and format
-- Multi-agent prompt review using Critic, Optimist, and Professor perspectives
-- Security scanner for prompt injection, jailbreak, and unsafe prompt patterns
-- Difficulty classifier for beginner, intermediate, advanced, and expert prompts
-- Chat and prompt history tracking
-- Prompt mutation tools
-- Prompt enhancement tools
-- SQLite-backed local persistence for development
+### Learning & Practice
+
+* Structured prompt engineering learning chapters
+* Prompt-writing practice sessions
+* AI-generated practice feedback
+* Scores, strengths, weaknesses, and suggestions
+* Final certification test
+* Certificate of completion
+
+### Prompt Evaluation
+
+* Prompt quality evaluation
+* Evaluation based on clarity, context, specificity, constraints, and format
+* Multi-agent review using different evaluation perspectives
+* Prompt security scanning
+* Detection of prompt injection, jailbreak, and unsafe prompt patterns
+* Prompt difficulty classification
+
+### Prompt Enhancement
+
+* AI-powered prompt improvement
+* Prompt mutation tools
+* Enhanced prompt generation
+* Enhancement history
+
+### User & Application Features
+
+* User registration and login
+* Email/OTP verification
+* Password reset
+* Session-based authentication
+* User dashboard
+* Progress and streak tracking
+* Activity history
+* Prompt history
+* Chat functionality
+* SQLite-backed local persistence
+
+---
 
 ## Tech Stack
 
-| Layer | Technology |
-| --- | --- |
-| Frontend | Next.js, React, TypeScript, Tailwind CSS, Radix UI |
-| Backend | Python, Flask, Flask-CORS |
-| Database | SQLite |
-| AI | Groq API, default model `llama-3.3-70b-versatile` |
+| Layer                  | Technologies                                       |
+| ---------------------- | -------------------------------------------------- |
+| **Frontend**           | Next.js, React, TypeScript, Tailwind CSS, Radix UI |
+| **Backend**            | Python, Flask, Flask-CORS                          |
+| **Database**           | SQLite                                             |
+| **AI**                 | Groq API, Llama 3.3 70B                            |
+| **Package Management** | pnpm                                               |
+
+---
+
+## Architecture
+
+PromptLab uses a modular frontend/backend architecture.
+
+```text
+                    ┌─────────────────────┐
+                    │      Next.js        │
+                    │      Frontend       │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │    API Gateway      │
+                    │      Port 8000      │
+                    └──────────┬──────────┘
+                               │
+          ┌────────────────────┼────────────────────┐
+          │                    │                    │
+          ▼                    ▼                    ▼
+   ┌─────────────┐      ┌─────────────┐      ┌─────────────┐
+   │ Areeba API  │      │ Fatima API  │      │  Laiba API  │
+   │   :5001     │      │   :5002     │      │   :5000     │
+   └─────────────┘      └─────────────┘      └─────────────┘
+          │
+          ▼
+   ┌─────────────┐
+   │  Rabia API  │
+   │   :5003     │
+   └─────────────┘
+```
+
+The application can also be run using the combined backend for development and API testing.
+
+---
 
 ## Project Structure
 
 ```text
-Final-year-project-1/
-  Backend/
-    main.py              # Single combined backend on port 5000
-    run_all.py           # Starts the four separate module backends
-    gateway.py           # Gateway/proxy backend on port 8000
-    requirements.txt
-    Areeba/app.py        # Auth service, port 5001
-    Fatima/app.py        # Learning service, port 5002
-    Laiba/app.py         # Evaluation service, port 5000
-    Rabia/app.py         # Enhancer service, port 5003
-  Frontend/
-    app/
-    components/
-    contexts/
-    package.json
-    pnpm-lock.yaml
+PromptLab/
+│
+├── Backend/
+│   ├── main.py
+│   ├── run_all.py
+│   ├── gateway.py
+│   ├── requirements.txt
+│   │
+│   ├── Areeba/
+│   │   └── app.py
+│   │
+│   ├── Fatima/
+│   │   └── app.py
+│   │
+│   ├── Laiba/
+│   │   └── app.py
+│   │
+│   └── Rabia/
+│       └── app.py
+│
+├── Frontend/
+│   ├── app/
+│   ├── components/
+│   ├── contexts/
+│   ├── package.json
+│   └── pnpm-lock.yaml
+│
+├── screenshots/
+│   ├── 01_landing_page_light.png
+│   ├── 12_dashboard_initial.png
+│   ├── 19_live_evaluation_screen.png
+│   └── 21_prompt_enhancement_enhanced_result.png
+│
+├── .gitignore
+└── README.md
 ```
+
+---
 
 ## Prerequisites
 
-- Python 3.10 or newer
-- Node.js 20 or newer
-- pnpm, or npm if you prefer npm installs
-- Groq API key from `https://console.groq.com`
+Before running PromptLab, install:
+
+* Python 3.10+
+* Node.js 20+
+* pnpm
+* A Groq API key
+
+---
 
 ## Environment Variables
 
-Create `Backend/.env`:
+### Backend
+
+Create a file named `.env` inside `Backend/`:
 
 ```env
 GROQ_API_KEY=your_groq_api_key_here
@@ -84,16 +235,21 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your_email@example.com
 SMTP_PASSWORD=your_email_app_password
+
 AREEBA_API=http://127.0.0.1:5001
 FATIMA_DB_PATH=fatima_learning.db
+
 RABIA_DB_PATH=rabia_enhancer.db
 RABIA_PORT=5003
 RABIA_USE_GROQ=false
+
 FLASK_DEBUG=false
 PRACTICE_PASSING_SCORE=70
 ```
 
-Create `Frontend/.env.local`:
+### Frontend
+
+Create `.env.local` inside `Frontend/`:
 
 ```env
 NEXT_PUBLIC_AREEBA_API=http://127.0.0.1:5001
@@ -102,179 +258,203 @@ NEXT_PUBLIC_LAIBA_API=http://localhost:5000
 NEXT_PUBLIC_RABIA_API=http://127.0.0.1:5003
 ```
 
-Do not commit `.env`, `.env.local`, or database files.
+> **Important:** Do not commit API keys, passwords, `.env` files, `.env.local` files, or local database files.
+
+---
 
 ## Backend Setup
+
+From the `Backend` directory:
 
 ```bash
 cd Backend
 python -m venv venv
+```
+
+### Windows
+
+```powershell
 venv\Scripts\activate
+```
+
+### Install dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
+---
+
 ## Frontend Setup
+
+From the `Frontend` directory:
 
 ```bash
 cd Frontend
 pnpm install
 ```
 
-If pnpm is not installed:
+If pnpm is not installed, npm can also be used:
 
 ```bash
 npm install
 ```
 
-## Running The Project
+---
 
-The frontend currently uses separate API URLs for Areeba, Fatima, Laiba, and Rabia. For the full app experience, run the multi-service backend.
+## Running the Project
 
-Terminal 1, backend services:
+For the complete application experience, run the separate backend services.
 
-```bash
+### Terminal 1 — Backend
+
+```powershell
 cd Backend
 venv\Scripts\activate
 python run_all.py
 ```
 
-This starts:
+The services run on:
 
-| Service | URL |
-| --- | --- |
-| Areeba auth backend | `http://127.0.0.1:5001` |
-| Fatima learning backend | `http://127.0.0.1:5002` |
-| Laiba evaluation backend | `http://localhost:5000` |
-| Rabia enhancer backend | `http://127.0.0.1:5003` |
+| Service               | URL                     |
+| --------------------- | ----------------------- |
+| Areeba Authentication | `http://127.0.0.1:5001` |
+| Fatima Learning       | `http://127.0.0.1:5002` |
+| Laiba Evaluation      | `http://localhost:5000` |
+| Rabia Enhancement     | `http://127.0.0.1:5003` |
+| API Gateway           | `http://127.0.0.1:8000` |
 
-Terminal 2, frontend:
+### Terminal 2 — Frontend
 
-```bash
+```powershell
 cd Frontend
 pnpm run dev
 ```
 
-Open `http://localhost:3000`.
+Then open:
 
-### Single Backend Mode
+```text
+http://localhost:3000
+```
 
-For development or API testing, the combined backend can also be run directly:
+---
 
-```bash
+## Single Backend Mode
+
+For development or API testing, the combined backend can also be started directly:
+
+```powershell
 cd Backend
 venv\Scripts\activate
 python main.py
 ```
 
-This starts a combined Flask backend on `http://localhost:5000`. Some frontend screens expect the separate services on ports 5001, 5002, and 5003, so use `run_all.py` for full frontend testing.
+This starts the combined Flask backend on:
+
+```text
+http://localhost:5000
+```
+
+Some frontend screens expect the separate services on ports `5001`, `5002`, and `5003`, so `run_all.py` is recommended for the complete application.
+
+---
 
 ## API Overview
 
 ### General
 
-| Method | Endpoint | Description |
-| --- | --- | --- |
-| GET | `/api/health` | Backend health check |
+| Method | Endpoint      | Description          |
+| ------ | ------------- | -------------------- |
+| GET    | `/api/health` | Backend health check |
 
-### Areeba: Authentication And Dashboard
+### Areeba — Authentication & Dashboard
 
-| Method | Endpoint | Description |
-| --- | --- | --- |
-| POST | `/api/areeba/register` | Register a user |
-| POST | `/api/areeba/verify-registration` | Verify registration code |
-| POST | `/api/areeba/resend-registration-code` | Resend verification code |
-| POST | `/api/areeba/login` | Login |
-| GET | `/api/areeba/me` | Current logged-in user |
-| POST | `/api/areeba/logout` | Logout |
-| POST | `/api/areeba/forgot-password` | Request password reset |
-| POST | `/api/areeba/reset-password` | Reset password |
-| GET | `/api/areeba/dashboard/me` | Current user dashboard |
-| GET | `/api/areeba/dashboard/<user_id>` | Dashboard by user ID |
-| GET | `/api/areeba/streak/me` | Current user streak |
-| GET | `/api/areeba/history` | Current user history |
+| Method | Endpoint                               | Description                         |
+| ------ | -------------------------------------- | ----------------------------------- |
+| POST   | `/api/areeba/register`                 | Register a new user                 |
+| POST   | `/api/areeba/verify-registration`      | Verify registration code            |
+| POST   | `/api/areeba/resend-registration-code` | Resend verification code            |
+| POST   | `/api/areeba/login`                    | User login                          |
+| GET    | `/api/areeba/me`                       | Get current user                    |
+| POST   | `/api/areeba/logout`                   | User logout                         |
+| POST   | `/api/areeba/forgot-password`          | Request password reset              |
+| POST   | `/api/areeba/reset-password`           | Reset password                      |
+| GET    | `/api/areeba/dashboard/me`             | Get current user's dashboard        |
+| GET    | `/api/areeba/dashboard/<user_id>`      | Get dashboard by user ID            |
+| GET    | `/api/areeba/streak/me`                | Get current user streak             |
+| GET    | `/api/areeba/history`                  | Get current user's activity/history |
 
-### Fatima: Learning, Practice, Evaluation and Certificate
+### Other Modules
 
-| Method | Endpoint | Description |
-| --- | --- | --- |
-| GET | `/api/fatima/health` | Learning service health check |
-| GET | `/api/fatima/chapters` | List learning chapters |
-| GET | `/api/fatima/chapters/<chapter_id>` | Chapter details |
-| GET | `/api/fatima/chapters/<chapter_id>/questions` | Chapter questions |
-| POST | `/api/fatima/practice/start` | Start practice session |
-| POST | `/api/fatima/practice/<session_id>/submit` | Submit practice answer |
-| POST | `/api/fatima/practice/<session_id>/change-question` | Change practice question |
-| GET | `/api/fatima/practice/sessions` | Practice session list |
-| GET | `/api/fatima/practice/sessions/<session_id>` | Practice session details |
-| GET | `/api/fatima/progress/me` | Current user progress |
-| GET | `/api/fatima/dashboard/me` | Learning dashboard |
-| POST | `/api/fatima/practice-feedback` | AI practice feedback |
-| GET | `/api/fatima/final-test/status` | Final test status |
-| POST | `/api/fatima/final-test/start` | Start final test |
-| POST | `/api/fatima/final-test/submit` | Submit final test |
-| GET | `/api/fatima/certificate/me` | Current user certificate |
+The remaining API endpoints support:
 
-### Laiba: Live Evaluation And Chat
+* Learning chapters and practice sessions
+* Certification tests and certificates
+* Prompt evaluation
+* Multi-agent prompt review
+* AI chat
+* Prompt enhancement
+* Prompt history
+* Analytics
+* Security scanning
+* Prompt difficulty classification
 
-| Method | Endpoint | Description |
-| --- | --- | --- |
-| POST | `/api/evaluate` | Full prompt evaluation |
-| POST | `/api/suggest` | Live prompt suggestions |
-| POST | `/api/multi-agent` | Multi-agent prompt review |
-| POST | `/api/security` | Prompt security scan |
-| POST | `/api/difficulty` | Prompt difficulty classification |
-| POST | `/api/mutate` | Generate prompt variations |
-| POST | `/api/domain` | Domain-specific evaluation |
-| POST | `/api/chat` | Chat with AI memory |
-| GET | `/api/history/<user_id>` | Prompt/chat history |
-| GET | `/api/analytics/<user_id>` | User analytics |
-| GET | `/api/progress/<user_id>` | Score history |
-| GET | `/api/templates` | Prompt templates |
-| GET | `/api/leaderboard` | Leaderboard data |
-| GET | `/api/admin/stats` | Admin statistics |
-
-### Rabia: Prompt Enhancer
-
-| Method | Endpoint | Description |
-| --- | --- | --- |
-| GET | `/api/rabia/health` | Enhancer service health check |
-| GET | `/api/rabia/enhancer/history` | Enhancement history |
-| GET | `/api/rabia/enhancer/sessions` | List enhancer sessions |
-| POST | `/api/rabia/enhancer/sessions` | Create enhancer session |
-| GET | `/api/rabia/enhancer/sessions/<session_id>` | Enhancer session details |
-| DELETE | `/api/rabia/enhancer/sessions/<session_id>` | Delete enhancer session |
-| POST | `/api/rabia/enhancer/enhance` | Enhance a prompt |
-| POST | `/api/rabia/enhancer/sessions/<session_id>/enhance-again` | Re-enhance prompt |
-| GET | `/api/rabia/enhancer/sessions/<session_id>/versions` | Prompt enhancement versions |
-| GET | `/api/rabia/enhancer/sessions/<session_id>/messages` | Enhancer messages |
+---
 
 ## Useful Commands
 
+### Check Git status
+
 ```bash
-# Frontend development server
-cd Frontend
-pnpm run dev
-
-# Frontend production build
-cd Frontend
-pnpm run build
-
-# Frontend lint
-cd Frontend
-pnpm run lint
-
-# Combined backend
-cd Backend
-python main.py
-
-# Multi-service backend
-cd Backend
-python run_all.py
+git status
 ```
 
-## Notes
+### Add changes
 
-- Backend database files are local SQLite files and are ignored by Git.
-- `Backend/main.py` uses `Backend/promptlab.db`.
-- The separate service apps may create their own local database files.
-- If the frontend cannot load a page, confirm the matching backend service is running on the expected port.
+```bash
+git add .
+```
+
+### Commit changes
+
+```bash
+git commit -m "Update README and screenshots"
+```
+
+### Push to GitHub
+
+```bash
+git push
+```
+
+---
+
+## Project Status
+
+PromptLab was developed as a university FYP-1 project in 2026.
+
+The project demonstrates the integration of:
+
+* AI-powered prompt evaluation
+* Prompt enhancement
+* User authentication
+* Backend API development
+* Database integration
+* Frontend/backend integration
+* User progress tracking
+* Modular application architecture
+
+---
+
+## Team
+
+**Areeba Sarwar** — FYP Lead
+**Fatima** — Learning Module
+**Laiba** — Evaluation & Chat
+**Rabia** — Prompt Enhancement
+
+---
+
+## Repository
+
+This repository contains my personal GitHub copy of the collaboratively developed PromptLab project, with my individual contributions documented above.
